@@ -13,6 +13,9 @@ programa sobre un minimarket el cual va a usarse para manejar la organizacion de
 --precios que fueron modificados 
 
 ![diagramas e-r](https://mail.google.com/mail/u/0?ui=2&ik=7798929128&attid=0.1&permmsgid=msg-a:r502937867532042378&th=17606d00ae8f906e&view=fimg&sz=s0-l75-ft&attbid=ANGjdJ9jEzMK_OaJFEG79x64lhQZuTma7gOmzO6RiGxgTFgEF6ukBqIJ8Hb9mmkXYqfvZ-S0eSQOf2Lxfx6R-yZUfPcVifYXd_KftnWFMs2Mz8AuJ4LvbTKzqO1XJto&disp=emb&realattid=ii_khzg67pi0)
+
+##### Problematica
+
 don jose tiene un minimarket el cual puede vender sin problemas pero luego de la pandemia empezo a perder ganancias ya que no mucha gente salia a comprar
 a su negocio entonces don jose nos pidio ayuda para que pueda vender productos en internet para poder seguir con su negocio de manera en linea algunas cosas que nos pido don jose fueron:
 
