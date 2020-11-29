@@ -52,26 +52,26 @@ CREATE TABLE detalle(
 
 CREATE TABLE historial_de_precios (
      id INT AUTO_INCREMENT,
-     Nombre VARCHAR(30),
+     producto_id_fk INT,
+     precio INT,
+     fechadecambio DATETIME,
 
-     PRIMARY KEY(id)
+     PRIMARY KEY (id),
+     FOREIGN KEY (producto_id_fk) REFERENCES producto(id)
      );
-     
-SET @tecnologia_id= (SELECT id FROM categoria WHERE nombre = 'tecnologia');
-SET @aseo_id= (SELECT id FROM categoria WHERE nombre = 'productos de aseo');
-SET @comida_id= (SELECT id FROM categoria WHERE nombre = 'comida');
-
-INSERT INTO producto (nombre,categoria_id_fk,precio) 
-VALUES ('caja de gansito',@comida_id,5000),
-('caja de chocolito',@comida_id,4000),
-('caja de chamito',@comida_id,2000),
-('paquete de esponjas',@aseo_id,750),
-('escoba para trapear',@aseo_id,1500),
-('cloro',@aseo_id,2000),
-('tablet samsung',@tecnologia_id,50000),
-('celular nokia',@tecnologia_id,100000),
-('notebook hp',@tecnologia_id,500000);
 
 
-     
+
+
+DELIMITER //
+CREATE TRIGGER trigger_historial_producto_valor BEFORE UPDATE ON producto
+    FOR EACH ROW
+BEGIN
+	INSERT INTO historial_de_precios VALUES(NULL,OLD.id,OLD.precio,NOW());
+END //
+DELIMITER ;   
+
+
+DELIMITER //
+CREATE TRIGGER 
 
