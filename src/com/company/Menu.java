@@ -8,9 +8,11 @@ public class Menu extends JFrame{
     private JButton agregarButton;
     private JButton categoriaAgButton;
     private JButton eliminarButton;
-    private JTable table1;
     private JButton mirarButton;
     private JButton agregarCliButton;
+    private JTable table1;
+    private JButton checarButton;
+    private JTable table2;
 
     public Menu(){
         super("Menu de tienda");
