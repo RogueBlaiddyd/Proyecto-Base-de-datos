@@ -1,8 +1,11 @@
 package com.company;
 
+import com.company.GUI.Login;
+import com.company.GUI.Menu;
+
 public class Main {
 
     public static void main(String[] args) {
-        new Menu();
+        Login login = new Login();
     }
 }

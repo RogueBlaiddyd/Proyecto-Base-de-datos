@@ -4,13 +4,13 @@ public class Factura {
     private int id;
     private int cliente_id_fk;
     private String fecha;
-    private int preferencial;
+    private int pagado;
 
-    public Factura(int id, int cliente_id_fk, String fecha, int preferencial) {
+    public Factura(int id, int cliente_id_fk, String fecha, int pagado) {
         this.id = id;
         this.cliente_id_fk = cliente_id_fk;
         this.fecha = fecha;
-        this.preferencial = preferencial;
+        this.pagado = pagado;
     }
 
     public int getId() {
@@ -37,12 +37,12 @@ public class Factura {
         this.fecha = fecha;
     }
 
-    public int getPreferencial() {
-        return preferencial;
+    public int getPagado() {
+        return pagado;
     }
 
-    public void setPreferencial(int preferencial) {
-        this.preferencial = preferencial;
+    public void setPagado(int pagado) {
+        this.pagado = pagado;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class Factura {
                 "id=" + id +
                 ", cliente_id_fk=" + cliente_id_fk +
                 ", fecha='" + fecha + '\'' +
-                ", preferencial=" + preferencial +
+                ", pagado=" + pagado +
                 '}';
     }
 }

@@ -1,8 +1,9 @@
 package com.company.DAO;
 
-import com.company.MiConexion;
+import com.company.miconexion.MiConexion;
 
-public class DaoHistorial extends DaoCategoria{
+public class DaoHistorial {
+    private MiConexion miLink6;
 
-    public DaoHistorial(MiConexion miLink) { super(miLink); }
+    public DaoHistorial(MiConexion miLink6) { this.miLink6 = miLink6; }
 }

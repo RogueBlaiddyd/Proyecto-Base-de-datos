@@ -1,9 +1,9 @@
 package com.company.DAO;
 
-import com.company.MiConexion;
+import com.company.miconexion.MiConexion;
 
-public class DaoProducto extends DaoCategoria{
+public class DaoProducto {
+    private MiConexion miLink7;
 
-    public DaoProducto(MiConexion miLink) { super(miLink); }
-
+    public DaoProducto(MiConexion miLink7) { this.miLink7 = miLink7; }
 }

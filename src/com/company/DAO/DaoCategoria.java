@@ -1,6 +1,6 @@
 package com.company.DAO;
 
-import com.company.MiConexion;
+import com.company.miconexion.MiConexion;
 
 public class DaoCategoria {
     private MiConexion miLink;
