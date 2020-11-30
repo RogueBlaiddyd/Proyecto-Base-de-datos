@@ -19,6 +19,7 @@ public class Login extends JFrame{
     private MiConexion miLink;
 
     public Login(){
+        //Setters del GUI
         super("Inicio de sesion");
         setVisible(true);
         setLocationRelativeTo(null);
@@ -27,11 +28,13 @@ public class Login extends JFrame{
         setResizable(false);
         add(panelLogin);
 
+        //Componentes
         String ip = "localhost";
         String db = "minimarket";
         String user = "root";
         String password = "";
 
+        //Conectores a base de datos
         try {
             miLink = new MiConexion(ip, user, password, db);
         } catch (SQLException throwables) {
@@ -39,6 +42,7 @@ public class Login extends JFrame{
         }
         DaoUsuario daoUsuario = new DaoUsuario(miLink);
 
+        //Botones
         ingresarAlMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

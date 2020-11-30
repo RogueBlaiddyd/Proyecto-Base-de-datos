@@ -25,22 +25,6 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="9878c" class="javax.swing.JLabel">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Ingresar producto:"/>
-                </properties>
-              </component>
-              <component id="4b745" class="javax.swing.JLabel">
-                <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Ingresar una categoria:"/>
-                </properties>
-              </component>
               <component id="1a74f" class="javax.swing.JLabel">
                 <constraints>
                   <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -49,7 +33,31 @@
                   <text value="Eliminar producto y/o categoria:"/>
                 </properties>
               </component>
-              <component id="c5633" class="javax.swing.JButton" binding="agregarButton" default-binding="true">
+              <component id="d7c5" class="javax.swing.JButton" binding="eliminarButton" default-binding="true">
+                <constraints>
+                  <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Eliminar"/>
+                </properties>
+              </component>
+              <component id="4b745" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Ingresar una categoria:"/>
+                </properties>
+              </component>
+              <component id="9878c" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Ingresar producto:"/>
+                </properties>
+              </component>
+              <component id="1d375" class="javax.swing.JButton" binding="categoriaAgButton">
                 <constraints>
                   <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -57,20 +65,12 @@
                   <text value="Agregar"/>
                 </properties>
               </component>
-              <component id="1d375" class="javax.swing.JButton" binding="categoriaAgButton">
+              <component id="c5633" class="javax.swing.JButton" binding="agregarButton" default-binding="true">
                 <constraints>
                   <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Agregar"/>
-                </properties>
-              </component>
-              <component id="d7c5" class="javax.swing.JButton" binding="eliminarButton" default-binding="true">
-                <constraints>
-                  <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Eliminar"/>
                 </properties>
               </component>
             </children>
