@@ -104,3 +104,20 @@ ELSE
    INSERT INTO valor_total VALUES (NULL, _valorTotal, _idfactura);
 END//
 DELIMITER ;
+
+						DELIMITER //
+CREATE PROCEDURE pagado1(_idfactura INT)
+BEGIN
+DECLARE cantidad_id_encontrados INT;
+
+SET cantidad_id_encontrados = (SELECT COUNT(id) FROM valor_total WHERE factura_id_fk = _idfactura);
+
+    IF cantidad_id_encontrados = 1 THEN
+        UPDATE factura SET pagado = 1 WHERE id = _idfactura;
+    ELSE
+        UPDATE factura SET pagado = 0 WHERE id = _idfactura;
+
+    END IF;
+
+END//
+DELIMITER ;
