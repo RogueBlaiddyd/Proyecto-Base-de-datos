@@ -59,6 +59,13 @@ CREATE TABLE historial_de_precios (
      PRIMARY KEY (id),
      FOREIGN KEY (producto_id_fk) REFERENCES producto(id)
      );
+     
+     CREATE TABLE valor_total (
+    id int ,
+    totalprecios VARCHAR(50),
+    factura_id_fk INT ,
+    PRIMARY KEY (id)
+);
 
 
 
