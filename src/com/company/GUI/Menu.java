@@ -2,14 +2,21 @@ package com.company.GUI;
 
 import com.company.DAO.DaoCategoria;
 import com.company.DAO.DaoProducto;
+import com.company.DAO.DaoProductoYCategorias;
+import com.company.DAO.DaoProductoYHistorial;
 import com.company.miconexion.MiConexion;
 import com.company.model.Categoria;
 import com.company.model.Producto;
+import com.company.model.ProductoYCategorias;
+import com.company.model.ProductoYHistorial;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.List;
 
 public class Menu extends JFrame{
     private JTabbedPane tabbedPane1;
@@ -19,12 +26,16 @@ public class Menu extends JFrame{
     private JButton eliminarButton;
     private JButton mirarButton;
     private JButton agregarCliButton;
-    private JTable table1;
+    private JTable productosTable;
     private JButton checarButton;
-    private JTable table2;
+    private JTable preciosTable;
     private JButton cambiarButton;
+    private JButton comenzarButton;
+    private JButton pagarButton;
 
     private MiConexion miLink2;
+    private DefaultTableModel modeloTable;
+    private DefaultTableModel modeloTable2;
 
     public Menu(){
         //Setters del GUI
@@ -49,6 +60,21 @@ public class Menu extends JFrame{
         }
         DaoCategoria daoCategoria = new DaoCategoria(miLink2);
         DaoProducto daoProducto = new DaoProducto(miLink2);
+        DaoProductoYCategorias daoProductoYCategorias = new DaoProductoYCategorias(miLink2);
+        DaoProductoYHistorial daoProductoYHistorial = new DaoProductoYHistorial(miLink2);
+
+        //Creacion Modelo Tabla
+        modeloTable = new DefaultTableModel();
+        modeloTable.addColumn("NombreProducto");
+        modeloTable.addColumn("Categoria");
+        modeloTable.addColumn("Precio");
+        productosTable.setModel(modeloTable);
+
+        modeloTable2 = new DefaultTableModel();
+        modeloTable2.addColumn("Nombre producto");
+        modeloTable2.addColumn("Precio antiguo");
+        modeloTable2.addColumn("Fecha Cambio");
+        preciosTable.setModel(modeloTable2);
 
         categoriaAgButton.addActionListener(new ActionListener() {
             @Override
@@ -122,6 +148,42 @@ public class Menu extends JFrame{
                     }
                 }else{
                     JOptionPane.showMessageDialog(panelMenu, "A elegido una opcion invalida, intente de nuevo");
+                }
+            }
+        });
+
+        mirarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                List<ProductoYCategorias> allDatas = daoProductoYCategorias.getAllData();
+
+                modeloTable = new DefaultTableModel();
+                modeloTable.addColumn("NombreProducto");
+                modeloTable.addColumn("Categoria");
+                modeloTable.addColumn("Precio");
+                productosTable.setModel(modeloTable);
+
+                for(ProductoYCategorias p : allDatas){
+                    String[] valores = new String[]{p.getNombreProducto(), p.getNombreCategoria(), String.valueOf(p.getPrecio())};
+                    modeloTable.addRow(valores);
+                }
+            }
+        });
+
+        checarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                List<ProductoYHistorial> allDatas = daoProductoYHistorial.getAllDatas();
+
+                modeloTable2 = new DefaultTableModel();
+                modeloTable2.addColumn("Nombre producto");
+                modeloTable2.addColumn("Precio antiguo");
+                modeloTable2.addColumn("Fecha Cambio");
+                preciosTable.setModel(modeloTable2);
+
+                for(ProductoYHistorial p : allDatas){
+                    String[] valores = new String[]{p.getNombreProducto(), String.valueOf(p.getPrecio()), p.getFecha()};
+                    modeloTable2.addRow(valores);
                 }
             }
         });
