@@ -62,7 +62,7 @@ CREATE TABLE historial_de_precios (
      
 CREATE TABLE valor_total (
     id INT AUTO_INCREMENT,
-    totalprecios VARCHAR(50),
+    totalprecios INT,
     factura_id_fk INT,
 
     PRIMARY KEY (id)
