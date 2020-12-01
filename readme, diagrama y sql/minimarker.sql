@@ -92,3 +92,15 @@ UPDATE producto SET NEW.precio = NEW.precio*1.21 WHERE id = NEW.id;
 END //
 DELIMITER ;
 
+DELIMITER //
+CREATE FUNCTION descuento1(_valorTotal INT, _idfactura INT)
+RETURNS INT
+BEGIN
+IF _valortotal >=50000 THEN 
+    _valorTotal = _valorTotal * 0.80 
+    INSERT INTO valor_total VALUES (NULL, _valorTotal, _idfactura);
+ELSE 
+   _valorTotal =  _valorTotal * 0.95 
+   INSERT INTO valor_total VALUES (NULL, _valorTotal, _idfactura);
+END;
+DELIMITER ;
