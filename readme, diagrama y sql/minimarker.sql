@@ -74,4 +74,13 @@ DELIMITER ;
 
 DELIMITER //
 CREATE TRIGGER 
+						
+						
+DELIMITER //
+CREATE TRIGGER iva_producto AFTER INSERT ON producto
+FOR EACH ROW
+BEGIN
+UPDATE producto SET NEW.precio = NEW.precio*1.21 WHERE id = NEW.id;
+END //
+DELIMITER ;
 
