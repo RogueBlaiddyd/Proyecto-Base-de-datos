@@ -78,10 +78,6 @@ BEGIN
 	INSERT INTO historial_de_precios VALUES(NULL,OLD.id,OLD.precio,NOW());
 END //
 DELIMITER ;   
-
-
-DELIMITER //
-CREATE TRIGGER 
 						
 						
 DELIMITER //
@@ -92,20 +88,23 @@ UPDATE producto SET NEW.precio = NEW.precio*1.21 WHERE id = NEW.id;
 END //
 DELIMITER ;
 
+
+
 DELIMITER //
-CREATE FUNCTION descuento1(_valorTotal INT, _idfactura INT)
-RETURNS INT
+CREATE PROCEDURE descuento1(_valorTotal INT, _idfactura INT)
 BEGIN
 IF _valortotal >=50000 THEN 
-    _valorTotal = _valorTotal * 0.80 
-    INSERT INTO valor_total VALUES (NULL, _valorTotal, _idfactura);
-ELSE 
-   _valorTotal =  _valorTotal * 0.95 
+   SET _valorTotal = _valorTotal * 0.80;
    INSERT INTO valor_total VALUES (NULL, _valorTotal, _idfactura);
+ELSE 
+   SET _valorTotal =  _valorTotal * 0.95;
+   INSERT INTO valor_total VALUES (NULL, _valorTotal, _idfactura);
+END IF;
+
 END//
 DELIMITER ;
 
-						DELIMITER //
+DELIMITER //
 CREATE PROCEDURE pagado1(_idfactura INT)
 BEGIN
 DECLARE cantidad_id_encontrados INT;
