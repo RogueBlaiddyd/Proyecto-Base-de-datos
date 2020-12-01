@@ -13,6 +13,8 @@ public class DaoCategoria {
 
     public DaoCategoria(MiConexion miLink) { this.miLink = miLink; }
 
+
+    //INSERTS, UPDATES o DELETES
     public void addCategoria(Categoria categoria){
         String sql = "INSERT INTO categoria VALUES ('"+categoria.getId()+"', '"+categoria.getNombreCat()+"')";
         Connection con = miLink.getCon();
@@ -26,6 +28,21 @@ public class DaoCategoria {
         }
     }
 
+    public void deleteCategoria(int idPaBorrar){
+        String sql = "DELETE FROM categoria WHERE id = '"+idPaBorrar+"'";
+        Connection con = miLink.getCon();
+
+        try {
+            Statement statement = con.createStatement();
+            int filasAfectadas = statement.executeUpdate(sql);
+            System.out.println("Cantidad de filas afectadas -Tabla categoria-: "+filasAfectadas);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+
+    //SELECTS ONLY
     public int numeroCat(){
         String sql = "SELECT COUNT(id) FROM categoria";
         int numeroCategorias = 0;

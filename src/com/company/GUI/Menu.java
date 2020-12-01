@@ -86,6 +86,46 @@ public class Menu extends JFrame{
             }
         });
 
+        cambiarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String producto = JOptionPane.showInputDialog("Ingrese el producto al que modificara el precio");
+                String precioNuevo = JOptionPane.showInputDialog("Ingrese el nuevo precio");
+
+                int idProducto = daoProducto.obtenerIdEspecifico(producto);
+                int precioReal = Integer.parseInt(precioNuevo);
+
+                daoProducto.updatePrecio(precioReal, idProducto);
+            }
+        });
+
+        eliminarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String cosoPaEliminar = JOptionPane.showInputDialog("¿Desea eliminar un producto o una categoria?");
+
+                if(cosoPaEliminar.equals("producto")){
+                    String nombreProducto = JOptionPane.showInputDialog("¿Que producto desea eliminar?");
+                    int idProducto = daoProducto.obtenerIdEspecifico(nombreProducto);
+
+                    daoProducto.deleteProducto(idProducto);
+                }else if (cosoPaEliminar.equals("categoria")){
+                    String nombreCategoria = JOptionPane.showInputDialog("¿Que categoria desea eliminar?");
+                    int idCategoria = daoCategoria.obtenerIdConcreto(nombreCategoria);
+
+                    int comprobadorExistenciaEnProducto = daoProducto.countIdCatEnProd(idCategoria);
+
+                    if(comprobadorExistenciaEnProducto == 0){
+                        daoCategoria.deleteCategoria(idCategoria);
+                    }else if(comprobadorExistenciaEnProducto == 1){
+                        JOptionPane.showMessageDialog(panelMenu, "La categoria esta asociada a un producto, por favor, eliminar el producto primero");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(panelMenu, "A elegido una opcion invalida, intente de nuevo");
+                }
+            }
+        });
+
 
     }
 
