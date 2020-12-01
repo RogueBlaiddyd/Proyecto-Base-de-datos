@@ -102,5 +102,5 @@ IF _valortotal >=50000 THEN
 ELSE 
    _valorTotal =  _valorTotal * 0.95 
    INSERT INTO valor_total VALUES (NULL, _valorTotal, _idfactura);
-END;
+END//
 DELIMITER ;
