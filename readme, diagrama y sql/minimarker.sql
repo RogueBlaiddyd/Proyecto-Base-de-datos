@@ -60,10 +60,11 @@ CREATE TABLE historial_de_precios (
      FOREIGN KEY (producto_id_fk) REFERENCES producto(id)
      );
      
-     CREATE TABLE valor_total (
-    id int ,
+CREATE TABLE valor_total (
+    id INT AUTO_INCREMENT,
     totalprecios VARCHAR(50),
-    factura_id_fk INT ,
+    factura_id_fk INT,
+
     PRIMARY KEY (id)
 );
 
