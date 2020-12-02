@@ -6,7 +6,7 @@ CREATE TABLE clientes(
     id INT AUTO_INCREMENT,
     nombre VARCHAR(50),
     rut VARCHAR(50),
-    preferencial BIT DEFAULT 0,
+    preferencial TINYINT,
 
     PRIMARY KEY(id)
     );
@@ -30,12 +30,12 @@ CREATE TABLE producto (
 
 CREATE TABLE factura (
     id INT AUTO_INCREMENT,
-    cliente_id_fk INT,
+    clientes_id_fk INT,
     fecha DATETIME,
-    pagado BIT DEFAULT 0,
+    pagado TINYINT,
 
     PRIMARY KEY (id),
-    FOREIGN KEY (cliente_id_fk) REFERENCES cliente(id)
+    FOREIGN KEY (clientes_id_fk) REFERENCES clientes(id)
 );
 
 CREATE TABLE detalle(
@@ -48,7 +48,7 @@ CREATE TABLE detalle(
     PRIMARY KEY (id),
     FOREIGN KEY (factura_id_fk) REFERENCES factura(id),
     FOREIGN KEY (producto_id_fk) REFERENCES producto(id)
-    );
+);
 
 CREATE TABLE historial_de_precios (
      id INT AUTO_INCREMENT,
@@ -58,7 +58,7 @@ CREATE TABLE historial_de_precios (
 
      PRIMARY KEY (id),
      FOREIGN KEY (producto_id_fk) REFERENCES producto(id)
-     );
+);
      
 CREATE TABLE valor_total (
     id INT AUTO_INCREMENT,

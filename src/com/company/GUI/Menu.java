@@ -1,14 +1,8 @@
 package com.company.GUI;
 
-import com.company.DAO.DaoCategoria;
-import com.company.DAO.DaoProducto;
-import com.company.DAO.DaoProductoYCategorias;
-import com.company.DAO.DaoProductoYHistorial;
+import com.company.DAO.*;
 import com.company.miconexion.MiConexion;
-import com.company.model.Categoria;
-import com.company.model.Producto;
-import com.company.model.ProductoYCategorias;
-import com.company.model.ProductoYHistorial;
+import com.company.model.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -62,6 +56,8 @@ public class Menu extends JFrame{
         DaoProducto daoProducto = new DaoProducto(miLink2);
         DaoProductoYCategorias daoProductoYCategorias = new DaoProductoYCategorias(miLink2);
         DaoProductoYHistorial daoProductoYHistorial = new DaoProductoYHistorial(miLink2);
+        DaoCliente daoCliente = new DaoCliente(miLink2);
+        DaoFactura daoFactura = new DaoFactura(miLink2);
 
         //Creacion Modelo Tabla
         modeloTable = new DefaultTableModel();
@@ -188,7 +184,23 @@ public class Menu extends JFrame{
             }
         });
 
+        agregarCliButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int idCli = 0;
+                String nombreCliente = JOptionPane.showInputDialog("Ingrese el nombre del cliente");
+                String rutCli = JOptionPane.showInputDialog("Ingrese el rut del cliente");
+                int preferencial = 0;
 
+                int idFac = 0;
+                int idCliFk = daoCliente.idClienteEspecifico(nombreCliente);
+                String fecha = JOptionPane.showInputDialog("Ingrese la fecha y hora de transaccion");
+                int pagado = 0;
+
+                daoCliente.addCliente(new Cliente(idCli, nombreCliente, rutCli, preferencial));
+                daoFactura.addFactura(new Factura(idFac, idCliFk, fecha, pagado));
+            }
+        });
     }
 
 
