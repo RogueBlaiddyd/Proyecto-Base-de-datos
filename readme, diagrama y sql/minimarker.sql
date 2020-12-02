@@ -120,3 +120,14 @@ SET cantidad_id_encontrados = (SELECT COUNT(id) FROM valor_total WHERE factura_i
 
 END//
 DELIMITER ;
+						
+DELIMITER //
+CREATE FUNCTION devolucion_iva(_total INT) RETURNS INT
+BEGIN
+DECLARE nuevototal INT;
+
+SET nuevototal = _total * 1.21;
+
+   RETURN nuevototal;
+END//
+DELIMITER ;
