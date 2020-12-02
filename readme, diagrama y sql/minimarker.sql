@@ -13,7 +13,7 @@ CREATE TABLE clientes(
 
 CREATE TABLE categoria (
     id INT AUTO_INCREMENT,
-    Nombre VARCHAR(50),
+    nombrecategoria VARCHAR(50),
    
     PRIMARY KEY(id)
     );
@@ -65,7 +65,8 @@ CREATE TABLE valor_total (
     totalprecios INT,
     factura_id_fk INT,
 
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (factura_id_fk) REFERENCES factura(id)	
 );
 
 
@@ -80,11 +81,11 @@ END //
 DELIMITER ;   
 						
 						
-DELIMITER //
-CREATE TRIGGER iva_producto AFTER INSERT ON producto
+DELIMITER // 
+CREATE TRIGGER iva_producto BEFORE INSERT ON producto
 FOR EACH ROW
 BEGIN
-UPDATE producto SET NEW.precio = NEW.precio*1.21 WHERE id = NEW.id;
+SET NEW.precio = NEW.precio * 1.21;
 END //
 DELIMITER ;
 

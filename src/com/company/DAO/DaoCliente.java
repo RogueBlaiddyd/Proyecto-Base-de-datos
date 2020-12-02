@@ -28,7 +28,7 @@ public class DaoCliente {
     }
 
     //SELECTS ONLY
-    public int idClienteEspecifico(String nombreCliente){
+    public int idEspecifico(String nombreCliente){
         String sql = "SELECT id FROM clientes WHERE nombre = '"+nombreCliente+"'";
         int idEncontrado = 0;
         Connection con = miLink3.getCon();
@@ -45,4 +45,5 @@ public class DaoCliente {
         }
         return idEncontrado;
     }
+
 }

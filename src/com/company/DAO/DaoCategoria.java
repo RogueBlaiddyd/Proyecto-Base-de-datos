@@ -63,7 +63,7 @@ public class DaoCategoria {
     }
 
     public int comprobarCat(String nombreComprobacion){
-        String sql = "SELECT COUNT(id) FROM categoria WHERE nombre = '"+nombreComprobacion+"'";
+        String sql = "SELECT COUNT(id) FROM categoria WHERE nombrecategoria = '"+nombreComprobacion+"'";
         int numeroCatEncontradas = 0;
         Connection con = miLink.getCon();
 
@@ -81,7 +81,7 @@ public class DaoCategoria {
     }
 
     public int obtenerIdConcreto(String nombreComprobacion){
-        String sql = "SELECT id FROM categoria WHERE nombre = '"+nombreComprobacion+"'";
+        String sql = "SELECT id FROM categoria WHERE nombrecategoria = '"+nombreComprobacion+"'";
         int idEncontrado = 0;
         Connection con = miLink.getCon();
 

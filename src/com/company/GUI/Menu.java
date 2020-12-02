@@ -26,6 +26,7 @@ public class Menu extends JFrame{
     private JButton cambiarButton;
     private JButton comenzarButton;
     private JButton pagarButton;
+    private JButton crearButton;
 
     private MiConexion miLink2;
     private DefaultTableModel modeloTable;
@@ -192,15 +193,26 @@ public class Menu extends JFrame{
                 String rutCli = JOptionPane.showInputDialog("Ingrese el rut del cliente");
                 int preferencial = 0;
 
-                int idFac = 0;
-                int idCliFk = daoCliente.idClienteEspecifico(nombreCliente);
-                String fecha = JOptionPane.showInputDialog("Ingrese la fecha y hora de transaccion");
-                int pagado = 0;
-
                 daoCliente.addCliente(new Cliente(idCli, nombreCliente, rutCli, preferencial));
-                daoFactura.addFactura(new Factura(idFac, idCliFk, fecha, pagado));
             }
         });
+
+        crearButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nombrecliente = JOptionPane.showInputDialog("Ingrese el nombre del cliente al que dirigira la factura");
+                int idFac = 0;
+                int idCli = daoCliente.idEspecifico(nombrecliente);
+                String fecha = JOptionPane.showInputDialog("Ingrese la fecha de emision");
+                int pagado = 0;
+
+                daoFactura.addFactura(new Factura(idFac, idCli, fecha, pagado));
+            }
+        });
+
+
+
+
     }
 
 

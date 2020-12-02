@@ -19,7 +19,7 @@ public class DaoProductoYCategorias {
     public DaoProductoYCategorias(MiConexion miLink8) { this.miLink8 = miLink8; }
 
     public List<ProductoYCategorias> getAllData(){
-        String sql = "SELECT producto.nombre, categoria.nombre, producto.precio FROM producto INNER JOIN categoria ON categoria.id = producto.categoria_id_fk";
+        String sql = "SELECT producto.nombre, categoria.nombrecategoria, producto.precio FROM producto INNER JOIN categoria ON categoria.id = producto.categoria_id_fk";
         List<ProductoYCategorias> list = new ArrayList<>();
         Connection con = miLink8.getCon();
 
@@ -28,7 +28,7 @@ public class DaoProductoYCategorias {
             ResultSet resultSet = statement.executeQuery(sql);
             while(resultSet.next()){
                 String nombreProd = resultSet.getString("nombre");
-                String nombreCat = resultSet.getString("Nombre");
+                String nombreCat = resultSet.getString("nombrecategoria");
                 int precioProd = resultSet.getInt("precio");
 
                 ProductoYCategorias productoYCategorias = new ProductoYCategorias(nombreProd, nombreCat, precioProd);
