@@ -243,13 +243,12 @@ public class Menu extends JFrame{
 
                 daoFactura.procedimientoPagado(idFactura);
 
-                daoValorTotal.totalConIva(total, idFactura);
+                int valorConIva = daoValorTotal.totalConIva(total, idFactura);
+                int idValorT = daoValorTotal.idEspecifico(idFactura);
+
+                daoValorTotal.totalConIva(valorConIva, idValorT);
             }
         });
-
-
-
-
     }
 
 

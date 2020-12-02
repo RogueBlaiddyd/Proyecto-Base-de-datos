@@ -70,6 +70,15 @@ CREATE TABLE valor_total (
 );
 
 
+CREATE TABLE usuario (
+   id INT AUTO_INCREMENT,
+   nombreusuario VARCHAR(50),
+   contraseña VARCHAR(50),
+
+   PRIMARY KEY (id)
+);
+
+
 
 
 DELIMITER //
