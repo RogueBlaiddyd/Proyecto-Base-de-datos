@@ -91,4 +91,22 @@ public class DaoProducto {
         return countEncontrado;
     }
 
+    public int precioEnEspecifico(String nombreProducto){
+        String sql = "SELECT precio FROM producto WHERE nombre = '"+nombreProducto+"'";
+        int precioEncontrado = 0;
+        Connection con = miLink7.getCon();
+
+        try {
+            Statement statement = con.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            resultSet.next();
+            int precioObtenido = resultSet.getInt(1);
+            precioEncontrado = precioObtenido;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return precioEncontrado;
+    }
+
 }

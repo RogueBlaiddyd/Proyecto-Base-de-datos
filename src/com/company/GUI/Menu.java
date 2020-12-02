@@ -59,6 +59,8 @@ public class Menu extends JFrame{
         DaoProductoYHistorial daoProductoYHistorial = new DaoProductoYHistorial(miLink2);
         DaoCliente daoCliente = new DaoCliente(miLink2);
         DaoFactura daoFactura = new DaoFactura(miLink2);
+        DaoDetalle daoDetalle = new DaoDetalle(miLink2);
+        DaoValorTotal daoValorTotal = new DaoValorTotal(miLink2);
 
         //Creacion Modelo Tabla
         modeloTable = new DefaultTableModel();
@@ -207,6 +209,41 @@ public class Menu extends JFrame{
                 int pagado = 0;
 
                 daoFactura.addFactura(new Factura(idFac, idCli, fecha, pagado));
+            }
+        });
+
+        comenzarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int idDet = 0;
+                String nombreCliente = JOptionPane.showInputDialog("Ingrese el nombre del cliente al que pertenece la factura");
+                String nombreProducto = JOptionPane.showInputDialog("Ingrese el nombre del producto que llevara");
+                String cantidad = JOptionPane.showInputDialog("Ingrese la cantidad de productos que llevara");
+
+                int idcliente = daoCliente.idEspecifico(nombreCliente);
+                int idFactura = daoFactura.idFactEspecifico(idcliente);
+                int idProducto = daoProducto.obtenerIdEspecifico(nombreProducto);
+                int cantidadReal = Integer.parseInt(cantidad);
+                int precioProducto = daoProducto.precioEnEspecifico(nombreProducto);
+
+                int precioReal = precioProducto*cantidadReal;
+                daoDetalle.addDetalle(new Detalle(idDet, idFactura, idProducto, cantidadReal, precioReal));
+            }
+        });
+
+        pagarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nombreCliente = JOptionPane.showInputDialog("Ingrese el nombre del ciente relacionado a la factura");
+                int idCliente = daoCliente.idEspecifico(nombreCliente);
+                int idFactura = daoFactura.idFactEspecifico(idCliente);
+
+                int total = daoDetalle.precioTotal(idFactura);
+                daoValorTotal.procedimientoInsert(total, idFactura);
+
+                daoFactura.procedimientoPagado(idFactura);
+
+                daoValorTotal.totalConIva(total, idFactura);
             }
         });
 
